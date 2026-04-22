@@ -1,19 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parcela Vero | Tiempo Propiedades</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcela Vero | Tiempo Propiedades</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <style>
+        :root { --dark: #0a0f1a; --darkcard: #111827; --celest: #22d3ee; --accent: #f43f5e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Satoshi', sans-serif; background: var(--dark); color: #fff; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10, 15, 26, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 15px 0; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { width: 45px; height: 45px; border: 3px solid var(--celest); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; }
+        .logo-center { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+        .logo-hand { position: absolute; width: 2px; height: 14px; background: #fff; bottom: 50%; left: 50%; transform-origin: bottom center; animation: clockHand 12s linear infinite; }
+        @keyframes clockHand { to { transform: translateX(-50%) rotate(360deg); } }
+        .logo-text h1 { font-size: 22px; font-weight: 700; color: #fff; }
+        .logo-text h1 span { color: var(--celest); }
+        .logo-text p { font-size: 11px; color: rgba(255,255,255,0.6); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 15px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--celest); }
+        .btn-whatsapp { background: linear-gradient(135deg, var(--accent), #e11d48); color: #fff; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(244, 63, 94, 0.4); }
+        .hero { min-height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 60px; position: relative; overflow: hidden; }
+        .hero-bg { position: fixed; inset: 0; background: url('https://blogger.googleusercontent.com/img/a/AVvXsEhaIscN-Qe2UU5qHDV_oRx_fKNO5c6Z8725ml24C4fVdS1r8zl1tHLB-tmWtJkL7XqMl_bW-_bUukt1BQ3-6av9l-86q2XXQz0zInEcrazDfxm2p73PiHpJqDGRa-X-fTYfxfcZlusuvX5NjnXT6S3l1JPeOX6XvzCYpQozUQ56X2IxMoIurQ-jTXa_4cE5') center/cover; z-index: -2; }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,15,26,0.85) 0%, rgba(17,24,39,0.9) 50%, rgba(10,15,26,0.95) 100%); }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(34,211,238,0.15); padding: 10px 20px; border-radius: 30px; margin-bottom: 25px; border: 1px solid rgba(34,211,238,0.3); }
+        .hero-badge .dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        .hero h1 { font-size: clamp(36px, 7vw, 64px); font-weight: 700; margin-bottom: 15px; line-height: 1.1; }
+        .gradient-text { background: linear-gradient(135deg, var(--celest), #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 550px; margin: 0 auto 30px; }
+        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent), #e11d48); color: #fff; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 16px; transition: 0.3s; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(244, 63, 94, 0.5); }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 16px; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); transition: 0.3s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 42px; font-weight: 700; color: var(--celest); }
+        .stat-text { font-size: 14px; color: rgba(255,255,255,0.6); }
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; padding: 0 0 50px; }
+        .section-title span { display: inline-flex; align-items: center; gap: 15px; color: var(--celest); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; }
+        .section-title h2 { font-size: clamp(32px,5vw,52px); font-weight: 700; margin-bottom: 15px; }
+        .section-title p { color: rgba(255,255,255,0.6); font-size: 17px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        @media(max-width:768px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
+        .gallery-item { aspect-ratio: 4/3; border-radius: 15px; overflow: hidden; cursor: pointer; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); opacity: 0; transition: 0.3s; }
+        .gallery-item:hover::after { opacity: 1; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .feature { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(10px); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .feature i { font-size: 32px; color: var(--celest); margin-bottom: 15px; }
+        .feature h3 { font-size: 18px; margin-bottom: 8px; }
+        .feature p { font-size: 14px; color: rgba(255,255,255,0.6); }
+        .price-card { background: rgba(17, 24, 39, 0.85); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid rgba(34,211,238,0.3); text-align: center; max-width: 500px; margin: 0 auto; }
+        .price-label { font-size: 14px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .price-value { font-size: 48px; font-weight: 700; color: var(--celest); }
+        .price-features { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 25px 0; }
+        .price-feature { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.7); }
+        .price-feature i { color: var(--celest); }
+        .contact { text-align: center; padding: 80px 20px; background: linear-gradient(180deg, transparent, rgba(17,24,39,0.5)); }
+        .contact h2 { font-size: 36px; margin-bottom: 15px; }
+        .contact p { color: rgba(255,255,255,0.7); margin-bottom: 30px; font-size: 18px; }
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(10,15,26,0.9); }
+        footer .logo { justify-content: center; margin-bottom: 25px; }
+        footer p { color: rgba(255,255,255,0.5); font-size: 14px; }
+        footer .credit { color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 10px; }
+        footer .instagram { color: var(--celest); text-decoration: none; }
+        footer .instagram:hover { color: #fff; }
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: #25d365; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; z-index: 99; box-shadow: 0 5px 20px rgba(37,211,101,0.4); animation: floatPulse 2s infinite; text-decoration: none; }
+        @keyframes floatPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+        @media(max-width:768px) { .nav-links { display: none; } .hero-stats { gap: 25px; } .stat-num { font-size: 32px; } .gallery-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
 </head>
 <body>
-  <header class="header"><h1 class="title neon-text">Parcela Vero</h1></header>
-  <main class="content">
-    <section class="gallery-grid" aria-label="galerÃ­a parcela vero">
-      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhaIscN-Qe2UU5qHDV_oRx_fKNO5c6Z8725ml24C4fVdS1r8zl1tHLB-tmWtJkL7XqMl_bW-_bUukt1BQ3-6av9l-86q2XXQz0zInEcrazDfxm2p73PiHpJqDGRa-X-fTYfxfcZlusuvX5NjnXT6S3l1JPeOX6XvzCYpQozUQ56X2IxMoIurQ-jTXa_4cE5" alt="Parcela Vero 1"/>
-      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjQ9wLHiBbRYQariH1IQWYn10lqAVGUsw0BdVrpvpyYU9QL0lCsZI-85xMPIJhvaxRerXIZ5JyA_48oRgW126_8f1FwPY_bmun6SM25e53LF6sIJ07PI3AZQUmsG_tPORpH4KEzp0G8sCskeqZBxkDCAGhYzl2yYMsHn0WdOw6Ez7yMyAV4yz3sBkqi5OhS" alt="Parcela Vero 2"/>
-      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgSF5sVSL3NXSJExmMxWhgaVEkcOrfPOHSDQWBk8mLViuDoG-q9Nh7rbgndqRMBxFuVLMYzPQNpI4ZUFDikn-p8CJnSTe2fqxPnR6LOuQ9nKkMTG1-KHlusv3PEvOip5Ufy6yL_XKB46sN9xfRoBv21aOp6Nd4BEX40MsCOCI7mVfq3FVfYM9to_0MLJYmu" alt="Parcela Vero 3"/>
+    <div class="hero-bg"></div>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-img"><div class="logo-center"></div><div class="logo-hand"></div></div>
+                <div class="logo-text"><h1>Tiempo<span>Propiedades</span></h1><p>Parcelas y Casas en Villarrica</p></div>
+            </a>
+            <div class="nav-links">
+                <a href="#parcelas">Parcelas</a>
+                <a href="#casas">Casas</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <a href="https://wa.me/56964681874" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Escribir</a>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span><span> Disponible</span></div>
+            <h1>Parcela <span class="gradient-text">Vero</span></h1>
+            <p>Parcela en-sector Vero. Ãrea verde con Ã¡rboles nativos.</p>
+            <div class="hero-buttons">
+                <a href="#galeria" class="btn-primary"><i class="fas fa-images"></i> Ver Fotos</a>
+                <a href="https://wa.me/56964681874?text=Hola,%20estoy%20interesado%20en%20la%20Parcela%20Vero" class="btn-secondary"><i class="fab fa-whatsapp"></i> Consultar</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><div class="stat-num">5.000</div><div class="stat-text">mÂ²</div></div>
+                <div class="stat"><div class="stat-num">Ãrea</div><div class="stat-text">Verde</div></div>
+                <div class="stat"><div class="stat-num">$XXX</div><div class="stat-text">Precio</div></div>
+            </div>
+        </div>
     </section>
-  </main>
+    <section id="galeria" class="section">
+        <div class="container">
+            <div class="section-title">
+                <span><span style="width:40px;height:1px;background:var(--celest);display:inline-block;"></span> GalerÃ­a <span style="width:40px;height:1px;background:var(--celest);display:inline-block;"></span></span>
+                <h2>Fotos de la <span class="gradient-text">Parcela</span></h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEhaIscN-Qe2UU5qHDV_oRx_fKNO5c6Z8725ml24C4fVdS1r8zl1tHLB-tmWtJkL7XqMl_bW-_bUukt1BQ3-6av9l-86q2XXQz0zInEcrazDfxm2p73PiHpJqDGRa-X-fTYfxfcZlusuvX5NjnXT6S3l1JPeOX6XvzCYpQozUQ56X2IxMoIurQ-jTXa_4cE5" alt="Foto 1"></div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEjQ9wLHiBbRYQariH1IQWYn10lqAVGUsw0BdVrpvpyYU9QL0lCsZI-85xMPIJhvaxRerXIZ5JyA_48oRgW126_8f1FwPY_bmun6SM25e53LF6sIJ07PI3AZQUmsG_tPORpH4KEzp0G8sCskeqZBxkDCAGhYzl2yYMsHn0WdOw6Ez7yMyAV4yz3sBkqi5OhS" alt="Foto 2"></div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEgSF5sVSL3NXSJExmMxWhgaVEkcOrfPOHSDQWBk8mLViuDoG-q9Nh7rbgndqRMBxFuVLMYzPQNpI4ZUFDikn-p8CJnSTe2fqxPnR6LOuQ9nKkMTG1-KHlusv3PEvOip5Ufy6yL_XKB46sN9xfRoBv21aOp6Nd4BEX40MsCOCI7mVfq3FVfYM9to_0MLJYmu" alt="Foto 3"></div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEjDUHaDi9qf8asgPj5Cfngo_-4wdsF9LDNkyyNfEO7ST5aDnkaSXqedbxbSXQDfF4bdkSHoOMN1QOPWQbpDjYcmSt4ekARB9DUKBZy4rrX6S1mNHj_KPYv4CM-MG4vCel1AkHxPn1FvqIfC09dbMcjUjOf34E50Q81wJfKtTkHguLUHsDU_UbSBYPG_wPo_" alt="Foto 4"></div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEisEVEMwLAh8CIZZamj5eATzK_iw7O4ZWURUhRzj0tc4A5EyfYFxUzpolhVQ7SC5qc-x3OrpPKIWv99YQJy-jpKHVWq56adQZy1BcUEDMX5mu8iC3rnJJOVGPWk2KSs5uz91aZeXQ6wOi9vUW_aICE2nhisGapVqjBZEbZH-5_KcsWNbk_O_0FrYpXirkib" alt="Foto 5"></div>
+                <div class="gallery-item"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEgYibklGKVC4ZQ-mKRnF_FIeR6Y9f2dhRW38vtbAjsDRznqDkeB2DCprnDxzmGsy58eHZHxvGeJPjxlIkLxbmqTf1Dh6vx2Fd9MDLu6rNqz55K-L-BQ5ywug_CNnE67eO5TPx2hldPnova-4CHNmx-0EiWqiMP02fUZZ-c7lkq3jDlfnXGiA8M2W68orTF7" alt="Foto 6"></div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <span><span style="width:40px;height:1px;background:var(--celest);display:inline-block;"></span> CaracterÃ­sticas <span style="width:40px;height:1px;background:var(--celest);display:inline-block;"></span></span>
+                <h2>Todo lo que <span class="gradient-text">Necesitas</span></h2>
+            </div>
+            <div class="features">
+                <div class="feature"><i class="fas fa-ruler-combined"></i><h3>5.000 mÂ²</h3><p>Superficie total</p></div>
+                <div class="feature"><i class="fas fa-tree"></i><h3>Ãrboles</h3><p>Nativos</p></div>
+                <div class="feature"><i class="fas fa-road"></i><h3>Acceso</h3><p>Camino paved</p></div>
+                <div class="feature"><i class="fas fa-mountain"></i><h3>Vista</h3><p>Al VolcÃ¡n</p></div>
+                <div class="feature"><i class="fas fa-water"></i><h3>Agua</h3><p>Pozo artesanal</p></div>
+                <div class="feature"><i class="fas fa-power-off"></i><h3>Luz</h3><p>Aysen</p></div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <span><span style="width:40px;height:1px;background:var(--celest);display:inline-block;"></span> InversiÃ³n <span style="width:40px;height:1px;background:var(--celest);display:inline-block;"></span></span>
+                <h2>Precio <span class="gradient-text">Especial</span></h2>
+            </div>
+            <div class="price-card">
+                <div class="price-label">Valor de Venta</div>
+                <div class="price-value">CONSULTAR</div>
+                <div class="price-features">
+                    <div class="price-feature"><i class="fas fa-check"></i> 5.000 mÂ²</div>
+                    <div class="price-feature"><i class="fas fa-check"></i> Ãrboles nativos</div>
+                    <div class="price-feature"><i class="fas fa-check"></i> Sector Vero</div>
+                </div>
+                <a href="https://wa.me/56964681874?text=Hola,%20estoy%20interesado%20en%20la%20Parcela%20Vero" class="btn-primary" style="display: block; margin-top: 20px;"><i class="fab fa-whatsapp"></i> Reservar Ahora</a>
+            </div>
+        </div>
+    </section>
+    <section id="contacto" class="contact">
+        <h2>Â¿Quieres MÃ¡s InformaciÃ³n?</h2>
+        <p>EscrÃ­benos y te enviamos los detalles completos</p>
+        <a href="https://wa.me/56964681874?text=Hola,%20quiero%20informaciÃ³n%20de%20la%20Parcela%20Vero" class="btn-primary"><i class="fab fa-whatsapp"></i> Contactar por WhatsApp</a>
+    </section>
+    <footer>
+        <a href="#" class="logo">
+            <div class="logo-img"><div class="logo-center"></div><div class="logo-hand"></div></div>
+            <div class="logo-text"><h1>Tiempo<span>Propiedades</span></h1></div>
+        </a>
+        <p style="margin-bottom:15px">Villarrica, Chile</p>
+        <p style="margin-bottom:15px"><a href="https://www.instagram.com/tu.web.pro360/" target="_blank" class="instagram"><i class="fab fa-instagram"></i> @tu.web.pro360</a></p>
+        <p>Â© 2026 Tiempo Propiedades. Todos los derechos reservados.</p>
+        <p class="credit">Impulsado por 360 Marketing</p>
+    </footer>
+    <a href="https://wa.me/56964681874" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </body>
 </html>
